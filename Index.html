@@ -1,31 +1,88 @@
 <!DOCTYPE html>
-<html lang="pt" class="pc">
+
 <head>
-
-  <!-- Basic Page Needs
-  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <meta charset="utf-8">
-  <title>Initial page</title>
-
-  <!-- Mobile Specific Metas
-  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <!-- FONT
-  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
-  <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:300" rel="stylesheet"> 
-  <!-- CSS
-  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <link rel="stylesheet" href="css.css">
+  <title>Jokempo Game</title>
 </head>
+
 <body>
 
-  <!-- Primary Page Layout
-  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  
+  <script>
+    //global variables
+    let playerScore = 0;
+    let computerScore = 0;
+    let gameRound = 0;
 
-<!-- End Document
-  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+
+    // computer generated actions
+    function computerPlay() {
+      let random = Math.random();
+      if (random <= 0.33) {
+        console.log("Computer chooses Rock!")
+        return "Rock"
+      } else if (random <= 0.66) {
+        console.log("Computer chooses Paper!")
+        return "Paper"
+      } else {
+        console.log("Computer chooses Scissor!")
+        return "Scissor"
+      }
+    }
+
+
+    // jogo Single Round
+    function singleRound(promptSelect, computerSelection) {
+      promptSelect = prompt("Rock, Paper or Scissors?", "ROCK");
+      playerSelection = promptSelect.toUpperCase();
+      console.log("You chose " + promptSelect);
+      computerSelection = computerPlay();
+
+      if (playerSelection == "ROCK" && computerSelection == "Paper") {
+        return "You Lose!"
+      } else if (playerSelection == "PAPER" && computerSelection == "Paper") {
+        return "That's a tie!"
+      } else if (playerSelection == "SCISSOR" && computerSelection == "Paper") {
+        return "You Won!"
+      } else if (playerSelection == "ROCK" && computerSelection == "Rock") {
+        return "That's a tie!"
+      } else if (playerSelection == "PAPER" && computerSelection == "Rock") {
+        return "You Lose!"
+      } else if (playerSelection == "SCISSOR" && computerSelection == "Rock") {
+        return "You Lose!"
+      } else if (playerSelection == "ROCK" && computerSelection == "Scissor") {
+        return "You Won!"
+      } else if (playerSelection == "PAPER" && computerSelection == "Scissor") {
+        return "You Lose!"
+      } else if (playerSelection == "SCISSOR" && computerSelection == "Scissor") {
+        return "That's a tie!"
+      } else {
+        return "Pick right!"
+      }
+    }
+    function game() {
+      for (gameRound = 0 ; gameRound < 5; ) {
+        let oneRound = singleRound();
+        if (oneRound === "You Won!") {
+          console.log("Player Scores!");
+          ++playerScore
+          gameRound = playerScore + computerScore;
+        } else if (oneRound === "You Lose!") {
+          console.log("Computer Scores!");
+          ++computerScore
+          gameRound = playerScore + computerScore;
+
+        } else {
+          console.log("Try again")
+        }
+        console.log("Computer - " + computerScore + " Player - " + playerScore)
+      }
+      if (gameRound = 5 && computerScore >= 3) {
+        console.log("You Lose the Match")
+      } else if (gameRound = 5 && playerScore >= 3) {
+        console.log("You Won the Match")
+      }
+    }
+  </script>
 </body>
+
 </html>
