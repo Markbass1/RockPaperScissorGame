@@ -30,7 +30,7 @@
     }
 
 
-    // jogo Single Round
+    //  Single Round game
     function singleRound(promptSelect, computerSelection) {
       promptSelect = prompt("Rock, Paper or Scissors?", "ROCK");
       playerSelection = promptSelect.toUpperCase();
@@ -59,8 +59,9 @@
         return "Pick right!"
       }
     }
-    function game() {
-      for (gameRound = 0 ; gameRound < 5; ) {
+// The game itself
+    function playGame() {
+      for (gameRound = 0; gameRound < 5;) {
         let oneRound = singleRound();
         if (oneRound === "You Won!") {
           console.log("Player Scores!");
