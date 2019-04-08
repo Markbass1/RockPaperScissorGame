@@ -6,6 +6,13 @@
 </head>
 
 <body>
+  <div class="container">
+    <button id="rockButton">Rock</button>
+    <br>
+    <button id="paperButton">Paper</button>
+    <br>
+    <button id="scissorsButton">Scissors</button>
+  </div>
 
   <script>
     //global variables
@@ -25,41 +32,54 @@
         return "Paper"
       } else {
         console.log("Computer chooses Scissor!")
-        return "Scissor"
+        return "Scissors"
       }
     }
 
 
     //  Single Round game
-    function singleRound(promptSelect, computerSelection) {
-      promptSelect = prompt("Rock, Paper or Scissors?", "ROCK");
-      playerSelection = promptSelect.toUpperCase();
-      console.log("You chose " + promptSelect);
+    function singleRound(Select, computerSelection) {
+      playerSelection = Select.toUpperCase();
+      console.log("You chose " + Select);
       computerSelection = computerPlay();
 
       if (playerSelection == "ROCK" && computerSelection == "Paper") {
-        return "You Lose!"
+        return "You Lose!";
       } else if (playerSelection == "PAPER" && computerSelection == "Paper") {
-        return "That's a tie!"
-      } else if (playerSelection == "SCISSOR" && computerSelection == "Paper") {
-        return "You Won!"
+        return "That's a tie!";
+      } else if (playerSelection == "SCISSORS" && computerSelection == "Paper") {
+        return "You Won!";
       } else if (playerSelection == "ROCK" && computerSelection == "Rock") {
-        return "That's a tie!"
+        return "That's a tie!";
       } else if (playerSelection == "PAPER" && computerSelection == "Rock") {
-        return "You Lose!"
-      } else if (playerSelection == "SCISSOR" && computerSelection == "Rock") {
-        return "You Lose!"
+        return "You Lose!";
+      } else if (playerSelection == "SCISSORS" && computerSelection == "Rock") {
+        return "You Lose!";
       } else if (playerSelection == "ROCK" && computerSelection == "Scissor") {
-        return "You Won!"
+        return "You Won!";
       } else if (playerSelection == "PAPER" && computerSelection == "Scissor") {
-        return "You Lose!"
-      } else if (playerSelection == "SCISSOR" && computerSelection == "Scissor") {
+        return "You Lose!";
+      } else if (playerSelection == "SCISSORS" && computerSelection == "Scissor") {
         return "That's a tie!"
       } else {
         return "Pick right!"
       }
     }
-// The game itself
+    // UI selector
+    const div = document.querySelector(".container");
+    div.setAttribute('style', 'display:grid; grid-template-columns: repeat(3, 1fr); align-items:center')
+
+    const btnScissors = document.querySelector("#scissorsButton");
+    const btnRock = document.querySelector("#rockButton");
+    const btnPaper = document.querySelector("#paperButton");
+
+    btnScissors.addEventListener("click", (e) => singleRound("Scissors"));
+    btnPaper.addEventListener("click", (e) => singleRound("Paper"));
+    btnRock.addEventListener("click", (e) => singleRound("Rock"));
+
+
+
+    // The game itself
     function playGame() {
       for (gameRound = 0; gameRound < 5;) {
         let oneRound = singleRound();
