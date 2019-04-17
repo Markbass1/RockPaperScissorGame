@@ -1,5 +1,9 @@
 I made this game for Project Rock Paper Scissors in Odin Project.
-To play enter the console with F12 and type playGame() .
-This is a 5 points jokempo game. Much needs to be done, but it works and its a start.
+There is the console mode in Master branch.
+To play it, type playGame() in console.
+
+or you can play the GUI mode in UI branch.
+
+Have fun.
 
 Mlbaraldi
