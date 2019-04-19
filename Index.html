@@ -3,26 +3,37 @@
 <head>
   <meta charset="utf-8">
   <title>Rock Paper Scissors Game</title>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="css/main.css">
+
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:100,300,400" rel="stylesheet">
 </head>
 
 <body>
   <header>
     <h1> Rock Paper Scissors</h1>
+    <p id="author"> by mlbaraldi</p>
   </header>
-
-  <h2> Choose either Rock, Paper or Scissors!</h2>
-
-  <div class="playerChoice">
-    <button id="Rock">Rock</button>
-    <br>
-    <button id="Paper">Paper</button>
-    <br>
-    <button id="Scissors">Scissors</button>
+  <div class="question">
+    <h2> Choose either Rock, Paper or Scissors!</h2>
   </div>
 
+  <div class="choice" <div class="playerChoice">
+    <div class="rockSpace">
+      <img src="images/rock.png" alt="Rock!" width="120px" height="auto">
+      <button id="Rock">Rock</button>
+    </div>
 
-  <div id="scoreboard">
+    <div class="paperSpace">
+      <img src="images/paper.png" alt="Paper!" width="120px" height="auto">
+      <button id="Paper">Paper</button>
+    </div>
+
+    <div class="scissorSpace">
+      <img src="images/scissor.png" alt="Scissor!" width="120px" height="auto">
+      <button id="Scissors">Scissors</button>
+    </div>
+  </div>
+  <div class="scoreboard">
     <h3>Player Score =<h4 id="pScoreBoard"> </h4>
     </h3>
     <h3>Computer Score =<h4 id="cScoreBoard"></h4>
@@ -31,7 +42,7 @@
       </h4>
     </h3>
   </div>
-  <div id="gamePicks">
+  <div class="gamePicks">
     <p id="playerPick"></p>
     <p id="computerPick"></p>
   </div>
@@ -51,9 +62,9 @@
     const computerPick = document.getElementById("computerPick");
     const playerPick = document.getElementById("playerPick");
 
-    pScoreBoard.innerHTML = playerScore;
-    cScoreBoard.innerHTML = computerScore;
-    rScoreBoard.innerHTML = gameRound;
+    pScoreBoard.innerText = playerScore;
+    cScoreBoard.innerText = computerScore;
+    rScoreBoard.innerText = gameRound;
 
     //function reset
     function resetScore() {
@@ -71,11 +82,13 @@
     //win function
     function win() {
       ++playerScore;
+      ++gameRound;
       pScoreBoard.innerHTML = playerScore;
+      rScoreBoard.innerHTML = gameRound;
       if (playerScore === 5) {
-        alert("You won the Game! \n\n" +
-          playerScore + " against " +
-          computerScore)
+        alert("You won the Game!\n\n" +
+          playerScore + "against " +
+          computerScore + "\n\n Thanks for playing!")
         resetScore();
       }
     }
@@ -83,11 +96,13 @@
     //lose function
     function lose() {
       ++computerScore;
+      ++gameRound;
       cScoreBoard.innerHTML = computerScore;
+      rScoreBoard.innerHTML = gameRound;
       if (computerScore === 5) {
-        alert("You lost the game!  \n\n" +
+        alert("You lost the game!\n\n" +
           computerScore + " against " +
-          playerScore)
+          playerScore + "\n\n Thanks for playing!")
         resetScore();
       }
     }
